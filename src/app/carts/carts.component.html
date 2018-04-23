@@ -1,0 +1,10 @@
+<h2>My Cart</h2>
+<ul class="carts">
+  <li *ngFor="let cart of carts" [class.selected]="cart === selectedCart" (click)="onSelect(cart)">
+    <a routerLink="/detail/{{cart.id}}">
+    <span class="badge">{{cart.id}}</span> {{cart.name}}
+    </a>
+  </li>
+</ul>
+
+<!-- <app-cart-detail [cart]="selectedCart"></app-cart-detail> -->
