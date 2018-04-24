@@ -3,18 +3,21 @@ var mongoose = require('mongoose');
 var CartSchema = new mongoose.Schema({
     type: String,
     title: String,
-    author: String,
     description: String,
     firstname: String,
     lastname: String,
     price: Number,
-    item:[
+    tax: Number,
+    items:[
         {
             price:Number,
-            description: String
+            description: String,
+            tax: Number,
+            picture: String
         }
     ],
-    amount: Number
+    orderFactor: Number
 });
+
 
 module.exports = mongoose.model('Cart', CartSchema);

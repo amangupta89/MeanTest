@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var cart = require('./routes/cart');
 var app = express();
 
+var cors = require('cors')
+app.use(cors())
+
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/mean-test', { useMongoClient: true, promiseLibrary: require('bluebird') })

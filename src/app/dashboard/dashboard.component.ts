@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../cart';
+// import { Cart } from '../cart';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -11,15 +11,25 @@ export class DashboardComponent implements OnInit {
 
   constructor(private cartService:CartService) { }
   
-  carts: Cart[];
+  carts:any;
+  results:any;
   
   ngOnInit() {
     this.getCarts();
   }
 
   getCarts(): void {
-    this.cartService.getCarts()
-      .subscribe(carts => this.carts = carts);
+    // this.cartService.getCarts().subscribe(data => {
+    //   console.log(data);
+    //   this.carts = data;
+    // });
+    this.cartService.getAggCarts().subscribe(data => {
+      console.log(data);
+      this.results = data;
+    });
+
+    // this.cartService.getCarts()
+    //   .subscribe(carts => this.carts = carts);
   }
 
 }

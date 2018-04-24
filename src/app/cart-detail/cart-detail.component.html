@@ -1,12 +1,20 @@
 <div *ngIf="cart">
+  
+  <h2>{{ cart.title | uppercase }} Details</h2>
+  <div><span>Id: </span>{{cart._id}}</div>
+  <div><span>Type: </span>{{cart.type}}</div>
+  <div><span>First Name: </span>{{cart.firstname}}</div>
+  <div><span>last Name: </span>{{cart.lastname}}</div>
+  <div><span>Title: </span>{{cart.title}}</div>
+  <div><span>Description: </span>{{cart.description}}</div>
+  <div><span>Order Factor: </span>{{cart.orderFactor}}</div>
 
-  <h2>{{ cart.name | uppercase }} Details</h2>
-  <div>
-    <span>id: </span>{{cart.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="cart.name" placeholder="name" />
-    </label>
+  <div><span>Items: </span>
+    <li *ngFor="let item of cart.items" >
+        Tax: {{item.tax}}
+        <br> Price: {{item.title}}
+        <br> Description: {{item.description}}
+    </li>
   </div>
   
   <button (click)="goBack()">go back</button>

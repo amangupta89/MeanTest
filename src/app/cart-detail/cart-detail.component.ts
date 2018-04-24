@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cart, Carts } from '../cart';
+import { Cart } from '../cart';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -14,7 +14,7 @@ import { CartService } from '../cart.service';
 })
 export class CartDetailComponent implements OnInit {
   
-  @Input() cart: Cart;
+  @Input() cart: any;
 
   constructor(private route: ActivatedRoute,
     private cartService: CartService,
@@ -25,9 +25,11 @@ export class CartDetailComponent implements OnInit {
   }
 
   getCart(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.cartService.getCart(id)
-      .subscribe(hero => this.cart = hero);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.cartService.getCart(id).subscribe(data => {
+      console.log(data);
+      this.cart = data;
+    });
   }
 
   goBack(): void {
